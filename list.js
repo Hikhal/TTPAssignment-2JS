@@ -44,3 +44,33 @@ const list = {
   };
 
   console.log(listToArray(list));  // Expected output: [1, 2, 3]
+
+  // prepend func
+  function prepend(element, list) {
+    if(element === null || element === undefined) {
+      throw new Error('Element cannot be null or undefined');
+    }
+    return { value: element, rest: list };
+  }
+  
+
+  // nth func
+ // nth: This function takes a list and an index and
+ // returns the value of the element at the given index in the list, or undefined if there is no such element.
+ // It's implemented using recursion: if the index is 0, it returns the value of the current element; otherwise, it calls itself with list.rest and index - 1.
+
+ 
+  function nth(list, index) {
+    if (typeof index !== 'number' || index < 0 || Math.floor(index) !== index) {
+      throw new Error('Index must be a non-negative integer');
+    }
+    
+    if (!list) {
+      return undefined;
+    } else if (index === 0) {
+      return list.value;
+    } else {
+      return nth(list.rest, index - 1);
+    }
+  }
+  
